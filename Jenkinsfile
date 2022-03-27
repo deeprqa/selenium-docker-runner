@@ -11,10 +11,11 @@ pipeline{
                    sh "docker-compose up search-module-chrome search-module-firefox parabank-module-chrome parabank-module-firefox"
                }
         }
-	    stage("Bring Grid Down"){
-	        steps{
-	            sh "docker-compose down"
-	        }
+	}
+	post{
+	    always{
+	        archiveArtifacts artifacts: 'output/**'
+	        sh "docker-compose down"
 	    }
 	}
 }
