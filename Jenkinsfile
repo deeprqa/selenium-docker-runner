@@ -8,7 +8,7 @@ pipeline{
 	    }
 	    stage("Run Test"){
         	   steps{
-                   sh "docker-compose up search-module parabank-module"
+                   sh "docker-compose up search-module-chrome search-module-firefox parabank-module-chrome parabank-module-firefox"
                }
         }
 	    stage("Bring Grid Down"){
